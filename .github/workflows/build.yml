@@ -16,6 +16,7 @@ jobs:
       - working-directory: fixarti
         run: |
           flutter create . --platforms=android --project-name fixarti --org com.fixarti
+          sed -i 's#<application#<uses-permission android:name="android.permission.INTERNET"/>\n    <application#' android/app/src/main/AndroidManifest.xml
           flutter pub get
           flutter build apk --release
       - uses: actions/upload-artifact@v4
